@@ -6,6 +6,13 @@ O objetivo foi construir um **Data Warehouse** do zero, partindo da geração de
 
 ---
 
+## 📌 Visão Geral
+
+Este projeto simula um ambiente real de Engenharia de Dados em uma grande rede de varejo,
+abrangendo geração massiva de dados, modelagem dimensional, ETL e análises avançadas orientadas a negócio.
+
+---
+
 ## 🏗️ Arquitetura do Projeto
 
 **Fluxo de Dados:**

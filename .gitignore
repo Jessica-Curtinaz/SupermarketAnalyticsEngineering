@@ -1,0 +1,13 @@
+# Ignorar dados pesados (CSVs e Excel)
+*.csv
+*.xlsx
+data/
+
+# Ignorar arquivos temporários e caches do Python
+__pycache__/
+*.ipynb_checkpoints/
+*.pyc
+
+# Ignorar arquivos de sistema
+.DS_Store
+Thumbs.db

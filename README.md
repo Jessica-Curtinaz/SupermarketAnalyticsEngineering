@@ -41,3 +41,34 @@ SupermarketAnalyticsEngineering/
 │
 ├── 📁 data/                 # Arquivos CSV brutos (Gitgnored devido ao tamanho)
 └── README.md                # Documentação do Projeto
+
+🚀 Destaques Técnicos
+1. Modelagem Dimensional (Star Schema)
+O banco foi estruturado para garantir alta performance em leituras analíticas:
+
+Fato: fato_vendas (Transacional).
+
+Dimensões: dim_produtos, dim_clientes, dim_lojas, dim_funcionarios, dim_datas (Calendário), dim_promocoes.
+
+2. SQL Avançado & Analytics
+Diferente de consultas básicas, foram desenvolvidas queries analíticas complexas (disponíveis na pasta sql/analise_avancada/):
+
+Análise Temporal: Cálculo de crescimento mês a mês (MoM) usando LAG e CTE.
+
+Segmentação de Clientes: Lógica de RFM e identificação de Churn com DATEDIFF.
+
+Ranking: Top produtos por loja usando ROW_NUMBER com PARTITION BY.
+
+3. Performance Tuning
+Criação de Cluster Indexes nas chaves primárias.
+
+Criação de Non-Clustered Indexes em colunas de alta cardinalidade (id_loja, data_venda) para acelerar filtros no Power BI.
+
+👣 Próximos Passos
+[ ] Desenvolvimento de Dashboard Executivo no Power BI.
+
+[ ] Implementação de pipeline automático com Apache Airflow (Futuro).
+
+* [ ] (Futuro) Aplicação de Pipeline de Machine Learning (Clustering) para segmentação automática de clientes.
+
+Desenvolvido por Jessica Curtinaz como projeto de portfólio de Engenharia de Dados.

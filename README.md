@@ -33,7 +33,7 @@ A camada de visualização foi construída com foco em UX (Experiência do Usuá
 ### 🎥 Demonstração Completa
 > Para ver as interações, tooltips e navegação dinâmica em funcionamento, assista ao vídeo de apresentação:
 
-[![Assistir no LinkedIn](https://img.shields.io/badge/▶_Assistir_Demo_no_LinkedIn-blue?style=for-the-badge&logo=linkedin)](INSIRA_SEU_LINK_DO_LINKEDIN_AQUI)
+[![Assistir no LinkedIn](https://img.shields.io/badge/▶_Assistir_Demo_no_LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/posts/jessica-freitas-49b68632s13_dataengineering-analyticsengineering-powerbi-ugcPost-7414708503329693696-ppH4?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFKA6zcBVY_vCTK6IT5DTK8mXhh-yFUttuI)
 
 ### Galeria de Telas
 

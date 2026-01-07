@@ -1,34 +1,76 @@
-# Supermarket Analytics Engineering 🛒📊
+# 🛒 Supermarket Analytics Engineering: Pipeline End-to-End
 
-Projeto *End-to-End* de Engenharia de Dados simulando o ecossistema de dados de uma grande rede de varejo ("MC Supermercados"). 
+![Status](https://img.shields.io/badge/Status-Concluído-success)
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL_Server-Data_Warehouse-red?logo=microsoft-sql-server&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power_BI-Dashboard-yellow?logo=powerbi&logoColor=white)
 
-O objetivo foi construir um **Data Warehouse** do zero, partindo da geração de dados massivos (Python), passando pela modelagem dimensional e carga (SQL Server), até a preparação para Analytics.
+> Um projeto completo de dados: da geração de dados massivos com Python à modelagem Star Schema no SQL e visualização executiva no Power BI.
 
 ---
 
 ## 📌 Visão Geral
 
-Este projeto simula um ambiente real de Engenharia de Dados em uma grande rede de varejo,
-abrangendo geração massiva de dados, modelagem dimensional, ETL e análises avançadas orientadas a negócio.
-
----
+Este projeto simula o ecossistema de dados real da rede fictícia "MC Supermercados".
+O objetivo foi construir um **Data Warehouse** do zero para responder a perguntas críticas de negócio.
 
 ## 🏗️ Arquitetura do Projeto
 
 **Fluxo de Dados:**
-`Geração de Dados (Python)` ➔ `ETL & Tratamento` ➔ `Data Warehouse (SQL Server)` ➔ `Analytics (SQL/Power BI)`
+`Geração de Dados (Python)` ➔ `ETL & Tratamento` ➔ `Data Warehouse (SQL Server)` ➔ `Analytics (Power BI & DAX)`
 
 * **Volume de Dados:** +2.4 Milhões de registros de vendas gerados.
-* **Modelagem:** Star Schema (Esquema Estrela) com tabela Fato e Dimensões.
-* **Período:** Dados transacionais simulando o ano fiscal de 2025.
+* **Modelagem:** Star Schema (Esquema Estrela) otimizado para leitura.
+* **Período:** Dados transacionais simulando o ano fiscal completo de 2025.
 
-## 🛠️ Tecnologias Utilizadas
+---
 
-* **Python:** Pandas, Numpy, Faker (Geração de dados sintéticos complexos com sazonalidade e regras de negócio).
-* **SQL Server:** Banco de Dados Relacional e Data Warehouse.
-* **SQLAlchemy & PyODBC:** Conectores para pipeline de ETL.
-* **SQL Avançado:** Window Functions (LAG, RANK), CTEs e Otimização de Índices.
-* **Git/GitHub:** Versionamento e Documentação.
+## 📊 Dashboard & Business Intelligence
+
+A camada de visualização foi construída com foco em UX (Experiência do Usuário) e Storytelling.
+*Nota: O arquivo editável (.pbix) não está disponível neste repositório, apenas as visualizações estáticas abaixo.*
+
+### 🎥 Demonstração Completa
+> Para ver as interações, tooltips e navegação dinâmica em funcionamento, assista ao vídeo de apresentação:
+
+[![Assistir no LinkedIn](https://img.shields.io/badge/▶_Assistir_Demo_no_LinkedIn-blue?style=for-the-badge&logo=linkedin)](INSIRA_SEU_LINK_DO_LINKEDIN_AQUI)
+
+### Galeria de Telas
+
+**1. Menu Principal & Navegação**
+*Interface estilo aplicativo com menu lateral retrátil.*
+![Capa](dashboard/1.Capa.png)
+
+**2. Visão Geral (Executivo)**
+*KPIs macroeconômicos: Faturamento, Lucro Líquido e Ticket Médio.*
+![Análise Geral](dashboard/2.Analise_Geral.png)
+
+**3. Análise Sazonal**
+*Vendas por dia da semana, feriados e picos mensais.*
+![Análise Sazonal](dashboard/3.Analise_Sazonal.png)
+
+**4. Performance de Produtos**
+*Matriz de Lucratividade, Pareto e Drill-through de Fornecedores.*
+![Categorias e Produtos](dashboard/4.Categorias_Produtos.png)
+
+**5. Perfil do Cliente**
+*Segmentação comportamenta (Caçadores de Oferta vs Premium).*
+![Perfil do Cliente](dashboard/5.Perfil_Cliente.png)
+
+---
+
+## 🛠️ Tecnologias & Engenharia
+
+### 1. Python (Ingestão & Geração)
+* **Bibliotecas:** `Pandas`, `Numpy`, `Faker`.
+* **Diferencial:** Script complexo que gera **sazonalidade realista** (picos de venda no Natal/Black Friday) e introduz "dados sujos" propositais (vendas sem cadastro) para testar a robustez do tratamento de dados.
+
+### 2. SQL Server (Armazenamento & Performance)
+* **Modelagem Dimensional:** Conversão de dados transacionais para Fato (`fato_vendas`) e Dimensões (`dim_produtos`, `dim_clientes`, `dim_lojas`, etc.).
+* **Performance Tuning:**
+    * Criação de **Cluster Indexes** nas chaves primárias.
+    * Uso de **Non-Clustered Indexes** em colunas de alta cardinalidade (`id_loja`, `data_venda`) para acelerar o consumo pelo Power BI.
+* **SQL Avançado:** Uso de Window Functions (`LAG`, `RANK`) e CTEs para análises de crescimento (MoM).
 
 ---
 
@@ -37,43 +79,22 @@ abrangendo geração massiva de dados, modelagem dimensional, ETL e análises av
 ```text
 SupermarketAnalyticsEngineering/
 │
-├── 📁 src/                  # Notebooks Python para Geração e ETL
-│   ├── Gerador de Vendas.ipynb        (Regras de negócio e geração de massa)
-│   └── Gerador do Banco de Dados.ipynb (Pipeline de Carga para o SQL Server)
+├── 📁 src/                  # Scripts de Engenharia
+│   ├── gerador_dados.py     # Script Python (Geração de massa e regras de negócio)
+│   └── query_modelagem.sql  # DDL das tabelas e Views
 │
-├── 📁 sql/                  # Scripts SQL
-│   ├── estrutura_tabelas/   (DDL das tabelas Fato e Dimensões)
-│   ├── analise_avancada/    (Queries de negócio: Churn, Month-over-Month, Ranking)
-│   └── queries_validacao.sql (Scripts de auditoria de dados)
+├── 📁 dashboard/            # Visualização (Prints)
+│   ├── 1.Capa.png
+│   ├── 2.Analise_Geral.png
+│   ├── 3.Analise_Sazonal.png
+│   ├── 4.Categorias_Produtos.png
+│   └── 5.Perfil_Cliente.png
 │
-├── 📁 data/                 # Arquivos CSV brutos (Gitgnored devido ao tamanho)
+├── 📁 sql/                  # Queries Analíticas (Validação)
+│   ├── analise_avancada/    # Scripts de Churn, RFM e MoM
+│   └── queries_validacao.sql
+│
 └── README.md                # Documentação do Projeto
 ```
-
----
-
-## 🚀 Destaques Técnicos
-
-### 1. Modelagem Dimensional (Star Schema)
-O banco foi estruturado para garantir alta performance em leituras analíticas:
-* **Fato:** `fato_vendas` (Transacional).
-* **Dimensões:** `dim_produtos`, `dim_clientes`, `dim_lojas`, `dim_funcionarios`, `dim_datas` (Calendário), `dim_promocoes`.
-
-### 2. SQL Avançado & Analytics
-Diferente de consultas básicas, foram desenvolvidas queries analíticas complexas (disponíveis na pasta `sql/analise_avancada/`):
-* **Análise Temporal:** Cálculo de crescimento mês a mês (MoM) usando `LAG` e `CTE`.
-* **Segmentação de Clientes:** Lógica de RFM e identificação de Churn com `DATEDIFF`.
-* **Ranking:** Top produtos por loja usando `ROW_NUMBER` com `PARTITION BY`.
-
-### 3. Performance Tuning
-* Criação de **Cluster Indexes** nas chaves primárias.
-* Criação de **Non-Clustered Indexes** em colunas de alta cardinalidade (`id_loja`, `data_venda`) para acelerar filtros no Power BI.
-
----
-
-## 👣 Próximos Passos
-* [ ] Desenvolvimento de Dashboard Executivo no Power BI.
-* [ ] (Futuro) Aplicação de Pipeline de Machine Learning (Clustering) para segmentação automática de clientes.
-
 ---
 *Desenvolvido por Jessica Curtinaz como projeto de portfólio de Engenharia e Análise de Dados.*
